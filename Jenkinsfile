@@ -1,12 +1,13 @@
 pipeline {
-    evirontment {
+    environment {
         VERSION="1.0.0"
         GITHUB_CREDENTIAL = credentials("github-token")
     }
 
     agent any
 
-    stage("build") {
+    stages {
+     stage("build") {
         steps  {
             echo "building ${VERSION}"
         }
@@ -22,5 +23,6 @@ pipeline {
         steps  {
             echo "deploying ${GITHUB_CREDENTIAL}"
         }
+    }   
     }
 }
